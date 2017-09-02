@@ -25,6 +25,8 @@ public class MotionController : MonoBehaviour {
 
 	public Transform Field = null;
 
+	private MotionDataEntity motionData = null;
+
 	// Use this for initialization
 	void Start () {
 		
