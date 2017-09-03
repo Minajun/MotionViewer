@@ -9,9 +9,9 @@ public class SceneViewCamera : MonoBehaviour
 	private Vector3 preMousePos;
 
 	public Transform Target;
-	private float DistanceToPlayerM = 20f;    // カメラとプレイヤーとの距離[m]
+	private float DistanceToPlayerM = 15f;    // カメラとプレイヤーとの距離[m]
 	private float SlideDistanceM = 0f;       // カメラを横にスライドさせる；プラスの時右へ，マイナスの時左へ[m]
-	private float HeightM = 1.5f;            // 注視点の高さ[m]
+	private float HeightM = 0.0f;            // 注視点の高さ[m]
 	private float RotationSensitivity = 100f;// 感度
 	private bool dragged = false;
 
