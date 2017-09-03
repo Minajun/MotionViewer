@@ -7,7 +7,6 @@ using UnityEngine.UI;
 public class MotionController : MonoBehaviour {
 	private GameObject objWWWLoader = null;
 	private WWWLoader WD = null;
-	private string rawData = null;
 	private int nFrameNum = 0;
 	private FrameData[] data = null;
 	public static int nCurrentFrame = 0; //現在のフレーム番号
@@ -26,9 +25,11 @@ public class MotionController : MonoBehaviour {
 
 	public Transform Field = null;
 
+	private MotionDataEntity motionData = null;
+
 	// Use this for initialization
 	void Start () {
-
+		
 	}
 	
 	// Update is called once per frame
@@ -163,9 +164,6 @@ public class MotionController : MonoBehaviour {
 	//SPHファイルの読み込み
 	private void LoadSphData(string fileName){
 		string url = "file:///D:\\kousen\\MOCAP_DATA\\Africa\\E_osazuwa-ekareta-part12";
-		//string url = "file:///D:/Git/RitsumeiPrj/RitsumeiPrj2/MOCAP_DATA" + fileName;
-		//string url = Application.dataPath + "/MOCAP_DATA" + fileName;
-		//string url = "file://C:/立命館プロジェクト/RitsumeiPrj/RitsumeiPrj2/MOCAP_DATA"+ fileName;
 
 		//SPHデータの読み込み
 		objWWWLoader = GameObject.Find ("WWWLoader");
@@ -177,9 +175,6 @@ public class MotionController : MonoBehaviour {
 	//TRCデータの読み込み
 	private void LoadTrcData(string fileName){
 		string url = "file:///D:\\kousen\\MOCAP_DATA\\Africa\\E_osazuwa-ekareta-part12";
-		//string url = "file:///D:/Git/RitsumeiPrj/RitsumeiPrj2/MOCAP_DATA" + fileName;
-		//string url = Application.dataPath + "/MOCAP_DATA" + fileName;
-		//string url = "file://C:/立命館プロジェクト/RitsumeiPrj/RitsumeiPrj2/MOCAP_DATA"+ fileName;
 
 		//TRCデータの読み込み
 		WD.SetURL (url + ".trc");
@@ -189,9 +184,6 @@ public class MotionController : MonoBehaviour {
 	//LINKデータの読み込み
 	private void LoadLinkData(string fileName){
 		string url = "file:///D:\\kousen\\MOCAP_DATA\\Africa\\E_osazuwa-ekareta-part12";
-		//string url = "file:///D:/Git/RitsumeiPrj/RitsumeiPrj2/MOCAP_DATA" + fileName;
-		//string url = Application.dataPath + "/MOCAP_DATA" + fileName;
-		//string url = "file://C:/立命館プロジェクト/RitsumeiPrj/RitsumeiPrj2/MOCAP_DATA"+ fileName;
 
 		//TRCデータの読み込み
 		WD.SetURL (url + ".lin");
@@ -246,7 +238,9 @@ public class MotionController : MonoBehaviour {
 		int cnt = 0;
 		int nMarkerNum = 0;
 
-		rawData = WD.GetResponse ();
+		//TRCデータの読み込み
+		string rawData = WD.GetResponse ();
+
 		//一行ごとにパース
 		string[] lines = rawData.Split ("\n"[0]);
 

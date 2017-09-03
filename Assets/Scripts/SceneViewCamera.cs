@@ -7,14 +7,19 @@
 public class SceneViewCamera : MonoBehaviour
 {
 	private Vector3 preMousePos;
-	//public GameObject Field = null;
 
 	public Transform Target;
-	public float DistanceToPlayerM = 20f;    // カメラとプレイヤーとの距離[m]
-	public float SlideDistanceM = 0f;       // カメラを横にスライドさせる；プラスの時右へ，マイナスの時左へ[m]
-	public float HeightM = 1.5f;            // 注視点の高さ[m]
-	public float RotationSensitivity = 100f;// 感度
+	private float DistanceToPlayerM = 15f;    // カメラとプレイヤーとの距離[m]
+	private float SlideDistanceM = 0f;       // カメラを横にスライドさせる；プラスの時右へ，マイナスの時左へ[m]
+	private float HeightM = 0.0f;            // 注視点の高さ[m]
+	private float RotationSensitivity = 100f;// 感度
 	private bool dragged = false;
+
+	private void Start(){
+		SetCameraPosition();
+		var lookAt = Target.position + Vector3.up * HeightM;
+		transform.RotateAround (lookAt, transform.right, -15.0f);
+	}
 
 	private void Update()
 	{
@@ -48,6 +53,11 @@ public class SceneViewCamera : MonoBehaviour
 
 	void FixedUpdate () {
 		if (dragged) {
+			SetCameraPosition();
+		}
+	}
+
+	void SetCameraPosition(){
 			var rotX = Input.GetAxis ("Mouse X") * Time.deltaTime * RotationSensitivity;
 			var rotY = Input.GetAxis ("Mouse Y") * Time.deltaTime * RotationSensitivity;
 
@@ -72,6 +82,5 @@ public class SceneViewCamera : MonoBehaviour
 
 			// カメラを横にずらして中央を開ける
 			transform.position = transform.position + transform.right * SlideDistanceM;
-		}
 	}
 }
