@@ -17,6 +17,8 @@ public class SceneViewCamera : MonoBehaviour
 
 	private void Start(){
 		SetCameraPosition();
+		var lookAt = Target.position + Vector3.up * HeightM;
+		transform.RotateAround (lookAt, transform.right, -15.0f);
 	}
 
 	private void Update()
