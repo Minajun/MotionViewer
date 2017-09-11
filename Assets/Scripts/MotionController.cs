@@ -29,14 +29,14 @@ public class MotionController : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-		
+		fileName = MotionData.Instance.fileName;
 	}
 	
 	// Update is called once per frame
 	void Update () {
 		int df = 0;
 		if (state == -1) { //待機中
-			
+			StartFileLoad();
 		} else if (state == -2) { //sphロード開始
 			//フィールドの角度をもとに戻す
 			Field.transform.eulerAngles = new Vector3(0.0f, 0.0f, 0.0f);
@@ -127,7 +127,6 @@ public class MotionController : MonoBehaviour {
 	}
 
 	public void StartFileLoad(){
-		fileName = IF.text;
 		if (state != -1) {
 			for (int i = 0; i < gameobjNode.Length; i++) {
 				Destroy (gameobjNode [i]);
@@ -163,7 +162,7 @@ public class MotionController : MonoBehaviour {
 
 	//SPHファイルの読み込み
 	private void LoadSphData(string fileName){
-		string url = "file:///D:\\kousen\\MOCAP_DATA\\Africa\\E_osazuwa-ekareta-part12";
+		string url = "file:///D:\\kousen\\MOCAP_DATA\\tmp\\"+fileName;
 
 		//SPHデータの読み込み
 		objWWWLoader = GameObject.Find ("WWWLoader");
@@ -174,7 +173,7 @@ public class MotionController : MonoBehaviour {
 
 	//TRCデータの読み込み
 	private void LoadTrcData(string fileName){
-		string url = "file:///D:\\kousen\\MOCAP_DATA\\Africa\\E_osazuwa-ekareta-part12";
+		string url = "file:///D:\\kousen\\MOCAP_DATA\\tmp\\"+fileName;
 
 		//TRCデータの読み込み
 		WD.SetURL (url + ".trc");
@@ -183,7 +182,7 @@ public class MotionController : MonoBehaviour {
 
 	//LINKデータの読み込み
 	private void LoadLinkData(string fileName){
-		string url = "file:///D:\\kousen\\MOCAP_DATA\\Africa\\E_osazuwa-ekareta-part12";
+		string url = "file:///D:\\kousen\\MOCAP_DATA\\tmp\\"+fileName;
 
 		//TRCデータの読み込み
 		WD.SetURL (url + ".lin");

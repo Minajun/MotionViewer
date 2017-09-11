@@ -49,6 +49,10 @@ public class SampleButtonController : BaseButtonController
 		{
 			// Button2がクリックされたとき
 			this.Button8Click();
+		}else if ("Button9".Equals(objectName))
+		{
+			// Button2がクリックされたとき
+			this.Button9Click();
 		}
 		else
 		{
@@ -96,5 +100,10 @@ public class SampleButtonController : BaseButtonController
 	{
 		Debug.Log("Button8 Click");
 		MC.SetEndFrame ();
+	}
+
+	private void Button9Click()
+	{
+		Application.LoadLevel (0);
 	}
 }
