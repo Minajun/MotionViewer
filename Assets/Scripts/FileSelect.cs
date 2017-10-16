@@ -5,7 +5,7 @@ using System; //Exception
 using System.Text; //Encoding
 
 public class FileSelect : MonoBehaviour {
-Vector2 scrollPosition = Vector2.zero;
+Vector2 scrollPosition = new Vector2(50, 50);
    public int selGridInt = 0;
     private string[] selStrings = {};
 
@@ -14,11 +14,9 @@ Vector2 scrollPosition = Vector2.zero;
 	}
 
     void OnGUI(){
-        scrollPosition = GUILayout.BeginScrollView(scrollPosition, false, true,  GUILayout.Width(400),  GUILayout.Height(300)); 
        
-        selGridInt = GUILayout.SelectionGrid(selGridInt, selStrings, 1);
+        selGridInt = GUILayout.SelectionGrid(selGridInt, selStrings, 2);
        
-        GUILayout.EndScrollView();
     }
 
 	public void ButtonPush() {

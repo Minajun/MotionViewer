@@ -162,8 +162,8 @@ public class MotionController : MonoBehaviour {
 
 	//SPHファイルの読み込み
 	private void LoadSphData(string fileName){
-		string url = "file:///D:\\kousen\\MOCAP_DATA\\tmp\\"+fileName;
-
+		//string url = "file:///D:\\kousen\\MOCAP_DATA\\tmp\\"+fileName;
+		string url = "file:///" + Application.dataPath + "/MOCAP_DATA/" + fileName;
 		//SPHデータの読み込み
 		objWWWLoader = GameObject.Find ("WWWLoader");
 		WD = objWWWLoader.GetComponent<WWWLoader> ();
@@ -173,7 +173,8 @@ public class MotionController : MonoBehaviour {
 
 	//TRCデータの読み込み
 	private void LoadTrcData(string fileName){
-		string url = "file:///D:\\kousen\\MOCAP_DATA\\tmp\\"+fileName;
+		//string url = "file:///D:\\kousen\\MOCAP_DATA\\tmp\\"+fileName;
+		string url = "file:///" + Application.dataPath + "/MOCAP_DATA/" + fileName;
 
 		//TRCデータの読み込み
 		WD.SetURL (url + ".trc");
@@ -182,7 +183,8 @@ public class MotionController : MonoBehaviour {
 
 	//LINKデータの読み込み
 	private void LoadLinkData(string fileName){
-		string url = "file:///D:\\kousen\\MOCAP_DATA\\tmp\\"+fileName;
+		//string url = "file:///D:\\kousen\\MOCAP_DATA\\tmp\\"+fileName;
+		string url = "file:///" + Application.dataPath + "/MOCAP_DATA/" + fileName;
 
 		//TRCデータの読み込み
 		WD.SetURL (url + ".lin");
